@@ -8,10 +8,11 @@ There are 4 demos:
 * Drawing (taken from https://github.com/Avamander/arduino-tvout/blob/master/examples/DemoNTSC/DemoNTSC.pde)
 * Game (taken from http://http.debian.net/debian/pool/main/x/xonix/xonix_1.4.orig.tar.gz)
 
-Video:
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=97oakB1NX68
 " target="_blank"><img src="http://img.youtube.com/vi/97oakB1NX68/0.jpg" 
 alt="VGA Demo on Bluepill" width="480" height="360" border="10" /></a>
+
+Video
 
 ## Introduction
 My idea of “fun” maybe odd, but here it is. This is a demo that displays a color VGA video with resolution of 256x192 and 64 colors without any specialized video hardware on a tiny STM32F103 board that can run only up to 72 MHz and has only 20 KB of RAM.
