@@ -45,13 +45,16 @@ How to connect wires:
 | B6 | VSync | | VGA VSync (14)
 | G | Ground | | VGA Ground (5,6,7,8,10)
 
-
-
 ## Evolution of the Project
 This project was born some time ago when I first installed a great [TVOut](https://playground.arduino.cc/Main/TVout) library on my Arduino Mega. I was really impressed with the fact that so small board (it is based on a tiny 16 MHz 8-bit processor) can display a video with reasonable quality.
+
 I started to look at similar projects and found a ["Glitch"](http://cliffle.com/project/glitch-demo/) demo, which is using more powerful, but still tiny, 32-bit processor. The “Glitch” was an inspiration for this project. I decided to get something in between and chose a ["blue pill"](http://wiki.stm32duino.com/index.php?title=Blue_Pill), which is using a 32-bit STM32F103 microcontroller, similar to the one in “Glitch” demo, but cheaper and less powerful (and as a bonus, it supports Arduino).
+
 The STM32F103 board that I chose can run only up to 72 MHz and has only 20 KB of RAM, compared to 168 MHz and 192 KB of RAM that “Glitch” demo is using, however I was hoping to use code very similar to Cliff’s. I decided to support a resolution of [Sinclair ZX Spectrum](https://en.wikipedia.org/wiki/ZX_Spectrum_graphic_modes) computers. By using “color attributes” (the colors are defined for 8x8 blocks of pixels, not for each pixel), the whole video memory can fit into only 7 KB of RAM. In this demo I am using 2-byte attributes instead of 1-byte attributes and takes approximately 7.7 KB. The reason is to simplify assembly code that pushes out the pixels.
+
 However, I was disappointed that even though the DMA is supported, it apparently can’t run fast enough for my goal. [This](https://vjordan.info/log/fpga/stm32-bare-metal-start-up-and-real-bit-banging-speed.html) article explains this fact in detail. So, the only option left was to use the approach similar to TVOut library. Please note, that it is possible to use DMA+SPI to create “green and white” VGA output (see great [Artekit](https://www.artekit.eu/vga-output-using-a-36-pin-stm32/) demo).
+
 After some time learning ARM assembler language I had an Arduino code that could display 256x192 with 64 colors; however I was getting a weird “zigzag” effect which I cannot explain even now. After struggling for some time to figure out the reason for that effect, I gave up. It was time to try to get closer to the hardware. 
 I decided to switch to the [STM32Cube](http://www.st.com/en/embedded-software/stm32cubef1.html) library. Originally, I thought that it will take a very short time. After all, Arduino is not really an operating system, how hard it can be? After rewriting my demo using HAL, I was hoping that it will run very soon. No, it didn’t.
+
 Since I don’t have oscilloscope or logical analyzer, I had no idea why nothing was shown on the screen. So, I had to learn what Arduino was doing for me at the start, which is actually quite a bit. After some time I realized that the reason was that my processor was running at 8 MHz, not 72! What a surprise! If you are interested, the code that actually switches to 72 MHz and does some other things, like initializing USB clock at 48 MHz is *SystemClock_Config* (in *startup.c*).
