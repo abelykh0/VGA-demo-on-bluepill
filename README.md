@@ -46,6 +46,13 @@ How to connect wires:
 | B6 | VSync | | VGA VSync (14)
 | G | Ground | | VGA Ground (5,6,7,8,10)
 
+## Project Description
+To generate VGA signal I am using 3 timers. TIM2 is used as a "shock absorber" (for a detailed description of this brilliant idea, see [A Glitch in the Matrix](http://cliffle.com/article/2015/06/11/matrix/)). TIM3 is used to generate HSync signal on PB0 using PWM and also to generate interrupt *TIM3_IRQHandler*, which calls *DoDraw*, which outputs pixels. TIM4 is used to generate VSync signal on PB6 using PWM and also to generate interrupt *TIM4_IRQHandler*, which sets a flag that indicates that we can draw on screen.
+
+USB serial is used in this demo. I decreased the priority of the USB interrupt so it wouldn’t interfere with the VGA output. You can connect using VT100 terminal, such as Tera Term, to use the demo.
+
+Also, since the VGA output is very tight, I disabled SysTick. To implement delay, I am using RTC. It is actually not trivial to read time from the RTC. The reason is that we need to read 3 values, and there’s no way to do it atomically. For the solution, see the implementation of the *Vga::millis* which I took from [Reading STM32F1 real-time clock](https://www.tablix.org/~avian/blog/archives/2012/04/reading_stm32f1_real_time_clock/).
+
 ## Evolution of the Project
 This project was born some time ago when I first installed a great [TVOut](https://playground.arduino.cc/Main/TVout) library on my Arduino Mega. I was really impressed with the fact that so small board (it is based on a tiny 16 MHz 8-bit processor) can display a video with reasonable quality.
 
