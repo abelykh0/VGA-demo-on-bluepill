@@ -42,8 +42,8 @@ How to connect wires:
 | PA3 | Green 2 | Resistor 680 Ohm | VGA green (2)
 | PA4 | Blue 1 | Resistor 470 Ohm | VGA blue (3)
 | PA5 | Blue 2 | Resistor 680 Ohm | VGA blue (3)
-| B0 | HSync | | VGA HSync (13)
-| B6 | VSync | | VGA VSync (14)
+| PB0 | HSync | | VGA HSync (13)
+| PB6 | VSync | | VGA VSync (14)
 | G | Ground | | VGA Ground (5,6,7,8,10)
 
 ## Project Description
