@@ -11,14 +11,14 @@ uint8_t Vga::BitmapMode = MODE_TVOUT;
 
 #define __irq extern "C"
 
-TIM_HandleTypeDef htim2;
-TIM_HandleTypeDef htim3;
-TIM_HandleTypeDef htim4;
+static TIM_HandleTypeDef htim2;
+static TIM_HandleTypeDef htim3;
+static TIM_HandleTypeDef htim4;
 
-volatile int vline = 0; /* The current line being drawn */
-volatile int vflag = 0; /* When 1, can draw on the screen */
-volatile int vdraw = 0; /* Used to increment vline every 2 drawn lines */
-volatile uint8_t *GPIO_ODR;
+static volatile int vline = 0; /* The current line being drawn */
+static volatile int vflag = 0; /* When 1, can draw on the screen */
+static volatile int vdraw = 0; /* Used to increment vline every 2 drawn lines */
+static volatile uint8_t *GPIO_ODR;
 
 void DoDraw();
 

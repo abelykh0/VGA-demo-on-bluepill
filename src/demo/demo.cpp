@@ -7,12 +7,12 @@
 #define M_PI 3.14159265358979323846
 #define random(howbig) (howbig == 0 ? 0 : (rand() % howbig))
 
-float zOff = 150;
-float xOff = 0;
-float yOff = 0;
-float cSize = 50;
-float view_plane = 95;
-float angle = M_PI / 60;
+static float zOff = 150;
+static float xOff = 0;
+static float yOff = 0;
+static float cSize = 50;
+static float view_plane = 95;
+static float angle = M_PI / 60;
 
 float cube3d[8][3] = {
     {xOff - cSize, yOff + cSize, zOff - cSize},

@@ -8,7 +8,7 @@
 #define LABEL_COLOR 0x3F00
 #define SCORE_COLOR 0x0F00
 
-uint8_t statusArea[H_STEPS * V_STEPS];
+static uint8_t statusArea[H_STEPS * V_STEPS];
 
 void DrawRunnerToGWorld()
 {

@@ -4,10 +4,11 @@
 
 namespace Vga
 {
-    const uint8_t* font;
     uint8_t cursor_x;
     uint8_t cursor_y;
-    bool isCursorVisible = false;
+
+    static const uint8_t* font;
+    static bool isCursorVisible = false;
     
     void cursorNext();
 	void print_char(uint8_t x, uint8_t y, unsigned char c, uint16_t color);
