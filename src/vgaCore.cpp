@@ -330,14 +330,12 @@ void Vga::InitVSync(
     sConfigOC.OCIdleState = TIM_OCIDLESTATE_RESET;
     sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
     HAL_TIM_PWM_ConfigChannel(&htim4, &sConfigOC, TIM_CHANNEL_1);
-    __HAL_TIM_ENABLE_IT(&htim4, TIM_IT_CC1);
     TIM_CCxChannelCmd(htim4.Instance, TIM_CHANNEL_1, TIM_CCx_ENABLE);
 
     sConfigOC.OCMode = TIM_OCMODE_INACTIVE;
     sConfigOC.Pulse = startDraw;
     HAL_TIM_OC_ConfigChannel(&htim4, &sConfigOC, TIM_CHANNEL_4);
     __HAL_TIM_ENABLE_IT(&htim4, TIM_IT_CC4);
-    TIM_CCxChannelCmd(htim4.Instance, TIM_CHANNEL_4, TIM_CCx_ENABLE);
 
     if (IS_TIM_BREAK_INSTANCE(htim4.Instance) != RESET)
     {
@@ -378,7 +376,6 @@ void Vga::InitHSync(
     sConfigOC.Pulse = startDraw - 12 - 1;
     HAL_TIM_OC_ConfigChannel(&htim2, &sConfigOC, TIM_CHANNEL_2);
     __HAL_TIM_ENABLE_IT(&htim2, TIM_IT_CC2);
-    TIM_CCxChannelCmd(htim2.Instance, TIM_CHANNEL_2, TIM_CCx_ENABLE);
 
     if (IS_TIM_BREAK_INSTANCE(htim2.Instance) != RESET)
     {
@@ -419,14 +416,12 @@ void Vga::InitHSync(
     sConfigOC.OCPolarity = TIM_OCPOLARITY_LOW;
     sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
     HAL_TIM_PWM_ConfigChannel(&htim3, &sConfigOC, TIM_CHANNEL_3);
-    __HAL_TIM_ENABLE_IT(&htim3, TIM_IT_CC3);
     TIM_CCxChannelCmd(htim3.Instance, TIM_CHANNEL_3, TIM_CCx_ENABLE);
 
     sConfigOC.OCMode = TIM_OCMODE_INACTIVE;
     sConfigOC.Pulse = startDraw - 1;
     HAL_TIM_OC_ConfigChannel(&htim3, &sConfigOC, TIM_CHANNEL_2);
     __HAL_TIM_ENABLE_IT(&htim3, TIM_IT_CC2);
-    TIM_CCxChannelCmd(htim3.Instance, TIM_CHANNEL_2, TIM_CCx_ENABLE);
 
     if (IS_TIM_BREAK_INSTANCE(htim3.Instance) != RESET)
     {
