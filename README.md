@@ -47,7 +47,7 @@ How to connect wires:
 | G | Ground | | VGA Ground (5,6,7,8,10)
 
 ## Project Description
-To generate VGA signal I am using 3 timers. TIM2 is used as a "shock absorber" (for a detailed description of this brilliant idea, see [A Glitch in the Matrix](http://cliffle.com/article/2015/06/11/matrix/)). TIM3 is used to generate HSync signal on PB0 using PWM and also to generate interrupt *TIM3_IRQHandler*, which calls *DoDraw*, which outputs pixels. TIM4 is used to generate VSync signal on PB6 using PWM and also to generate interrupt *TIM4_IRQHandler*, which sets a flag that indicates that we can draw on screen.
+To generate VGA signal I am using 3 timers. TIM2 is used as a "shock absorber" (for a detailed description of this brilliant idea, see [A Glitch in the Matrix](http://cliffle.com/blog/glitch-in-the-matrix/)). TIM3 is used to generate HSync signal on PB0 using PWM and also to generate interrupt *TIM3_IRQHandler*, which calls *DoDraw*, which outputs pixels. TIM4 is used to generate VSync signal on PB6 using PWM and also to generate interrupt *TIM4_IRQHandler*, which sets a flag that indicates that we can draw on screen.
 
 USB serial is used in this demo. I decreased the priority of the USB interrupt so it wouldn’t interfere with the VGA output. You can connect using VT100 terminal, such as Tera Term, to use the demo.
 
