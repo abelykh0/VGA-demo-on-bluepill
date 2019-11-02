@@ -22,7 +22,7 @@ If you want to try my project, this is the only part that you need.
 
 | Hardware      |    Qty|
 | ------------- | -----:|
-| "blue pill" STM32F103C8 board | 1
+| ["blue pill"](https://stm32-base.org/boards/STM32F103C8T6-Blue-Pill) STM32F103C8 board | 1
 | Resistors 470 Ohm | 3
 | Resistors 680 Ohm | 3
 | Breadboard | 1
@@ -56,7 +56,7 @@ Also, since the VGA output is very tight, I disabled SysTick. To implement delay
 ## Evolution of the Project
 This project was born some time ago when I first installed a great [TVOut](https://playground.arduino.cc/Main/TVout) library on my Arduino Mega. I was really impressed with the fact that so small board (it is based on a tiny 16 MHz 8-bit processor) can display a video with reasonable quality.
 
-I started to look at similar projects and found a ["Glitch"](http://cliffle.com/blog/introducing-glitch/) demo, which is using more powerful, but still tiny, 32-bit processor. The “Glitch” was an inspiration for this project. I decided to get something in between and chose a ["blue pill"](http://wiki.stm32duino.com/index.php?title=Blue_Pill), which is using a 32-bit STM32F103 microcontroller, similar to the one in “Glitch” demo, but cheaper and less powerful (and as a bonus, it supports Arduino).
+I started to look at similar projects and found a ["Glitch"](http://cliffle.com/blog/introducing-glitch/) demo, which is using more powerful, but still tiny, 32-bit processor. The “Glitch” was an inspiration for this project. I decided to get something in between and chose a ["blue pill"](https://stm32-base.org/boards/STM32F103C8T6-Blue-Pill), which is using a 32-bit STM32F103 microcontroller, similar to the one in “Glitch” demo, but cheaper and less powerful (and as a bonus, it supports Arduino).
 
 The STM32F103 board that I chose can run only up to 72 MHz and has only 20 KB of RAM, compared to 168 MHz and 192 KB of RAM that “Glitch” demo is using, however I was hoping to use code very similar to Cliff’s. I decided to support a resolution of [Sinclair ZX Spectrum](https://en.wikipedia.org/wiki/ZX_Spectrum_graphic_modes) computers. By using “color attributes” (the colors are defined for 8x8 blocks of pixels, not for each pixel), the whole video memory can fit into only 7 KB of RAM. In this demo I am using 2-byte attributes instead of 1-byte attributes and takes approximately 7.7 KB. The reason is to simplify assembly code that pushes out the pixels.
 
