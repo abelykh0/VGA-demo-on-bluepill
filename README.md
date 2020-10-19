@@ -1,6 +1,8 @@
 # VGA-demo-on-bluepill
 VGA demo on bluepill (using STM32F103 microcontroller)
 
+![Board](https://raw.githubusercontent.com/abelykh0/VGA-demo-on-bluepill/master/doc/Board.jpg)
+
 ## What it can do
 There are 4 demos:
 * Displaying color image (taken from http://www.worldofspectrum.org/pub/sinclair/screens/load/b/scr/BubbleBobble.scr)
