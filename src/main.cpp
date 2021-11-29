@@ -34,7 +34,7 @@ void setup()
 
     HAL_SuspendTick();
     Vga::BitmapMode = MODE_SINCLAIR;
-    Vga::InitVga(Vga::timing_640x480_60_01hz);
+    Vga::InitVga(Vga::timing_640x480_60hz);
     Vga::clear_screen(0x3F10);
 }
 
@@ -50,7 +50,7 @@ void loop()
         {
             sprintf(&buf[3 * i], "%02x ", buffer[i]);
         }
-        CDC_Transmit_FS((uint8_t *)buf, 3 * len);
+        //CDC_Transmit_FS((uint8_t *)buf, 3 * len);
 
         if (len == 5 && buffer[0] == '\x1B' && buffer[1] == '\x5B' && buffer[2] == '\x31' && buffer[4] == '\x7e')
         {
